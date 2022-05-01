@@ -4,9 +4,9 @@ function BuyerLayoutFooter() {
   return (
     <footer className='h-footer' style={{marginTop:"20px"}}>
       <div className='h-footer-container'>
-        <div>Môn Lập trình Web Nhóm 2</div>
-        <div>Phan Quang Hiếu</div>
+        <div>Môn phát triển phần mềm hướng dịch vụ</div>
         <div>Chu Đức Chính</div>
+        <div>Bùi Anh Quân</div>
         <div>...</div>
       </div>
     </footer>
