@@ -5,13 +5,16 @@ import { Link } from 'react-router-dom'
 import toast from '../../../../../libs/Toast/Toast'
 
 function WarehouseDetail(props) {
-  useEffect(async () => {
-    const res = await request.get(`/api/warehouse/detail?id=${props.match.params.id}`)
-    if (res) {
-      setWarehouse(res.warehouse)
+  const [warehouse, setWarehouse] = useState({})
+  useEffect(()=>{
+       const a = async () => {
+      const res = await request.get(`/api/warehouse/detail?id=${props.match.params.id}`)
+      if (res) {
+        setWarehouse(res.warehouse)
+      }
+        a()
     }
   }, [])
-  const [warehouse, setWarehouse] = useState({})
   const exportProduct = async (id) => {
     const res = await request.post('/api/warehouse/export', {
       id

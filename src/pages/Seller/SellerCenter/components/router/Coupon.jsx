@@ -13,7 +13,7 @@ function Coupon() {
     if (res) {
       setListVoucher(res.vouchers)
     }
-  })
+  },[])
   const handleCreateVoucher=async ()=>{
     if (nameVoucher===""){
       return false;
@@ -45,11 +45,11 @@ function Coupon() {
       }
     }
   }
-  if (listVoucher.length !== 0) {
+  if (listVoucher?.length !== 0) {
     return (
       <div>
         <h2>Danh sach voucher</h2>
-        {listVoucher.map((value, i) => {
+        {listVoucher?.map((value, i) => {
           return (
             <div>
               <div className='voucher d-flex justify-content-between align-items-center'>

@@ -7,13 +7,6 @@ import request from '../../../services/request'
 
 function HomeBuyer() {
   useEffect(async () => {
-
-    // const fetch = async () => {
-    //   let res = await request.get('/todos/2')
-    //   console.log(res)
-    //   console.log(local.get('sasa'))
-    // }
-    // fetch()
     await getProduct()
   }, [])
 
