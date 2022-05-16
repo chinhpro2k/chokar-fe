@@ -7,7 +7,7 @@ const URL_BY_USER_TYPE = {
 
 let auth = {}
 
-auth.signUp = async (phone, password, userType) => {
+auth.signUp = async (username, password, userType) => {
   try {
     let response = await fetch(
       process.env.REACT_APP_BE_URL + URL_BY_USER_TYPE[userType] + '/seller/api/auth/signup',
@@ -16,7 +16,7 @@ auth.signUp = async (phone, password, userType) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phone, password }),
+        body: JSON.stringify({ username, password }),
       }
     )
     if (!response.ok) return { error: 1, message: 'Server error' }
@@ -27,7 +27,7 @@ auth.signUp = async (phone, password, userType) => {
   }
 }
 
-auth.login = async (phone, password, userType) => {
+auth.login = async (username, password, userType) => {
   try {
     let response = await fetch(
       process.env.REACT_APP_BE_URL + URL_BY_USER_TYPE[userType] + '/seller/api/auth/login',
@@ -36,13 +36,14 @@ auth.login = async (phone, password, userType) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phone, password }),
+        body: JSON.stringify({ username, password }),
       }
     )
     if (!response.ok) return { error: 1, message: 'Server error' }
     response = await response.json()
+
     local.set('user', response?.user)
-    local.set('token', response.token)
+    local.set('token', response?.token)
 
     return response
   } catch (error) {

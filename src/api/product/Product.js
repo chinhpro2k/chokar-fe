@@ -1,4 +1,4 @@
-import local from '../../services/local'
+
 
 export const createProduct=async (shopId,name,price,description,imageUrl)=>{
   try {
