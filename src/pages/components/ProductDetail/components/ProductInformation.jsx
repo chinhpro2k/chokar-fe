@@ -33,21 +33,21 @@ function ProductInformation(props){
     return(
       <div id="product-detail" className="container d-flex">
         <div className="image-product">
-          {props.product.imageUrl?<img src={props.product.imageUrl}/>
+          {props.product?.imageUrl?<img src={props.product?.imageUrl}/>
             :<></>}
         </div>
         <div className="product-information">
           <div className="name-product">
-            <h1>{props.product.name}</h1>
+            <h1>{props.product?.name}</h1>
           </div>
           <div className="price">
-            <p>Giá: {props.product.price} đ</p>
+            <p>Giá: {props.product?.price} đ</p>
           </div>
           <div className="d-flex align-items-center">
             <div className="btn-buy-now">
               <button>Mua ngay</button>
             </div>
-            <div className="add-to-cart" onClick={()=>handleAddToCart(props.product.id)}>
+            <div className="add-to-cart" onClick={()=>handleAddToCart(props.product?.id)}>
               <i className="fas fa-cart-plus"></i>
             </div>
             <div className="favourite">
@@ -56,15 +56,15 @@ function ProductInformation(props){
           </div>
           <div className="description">
             <h2>Mô tả sản phẩm</h2>
-            <p>{props.product.description}</p>
+            <p>{props.product?.description}</p>
           </div>
         </div>
         {props.product.shop&&<div className="shop-information d-flex">
           <div className="image-shop">
-            {props.product.shop.img?<img src={props.product.shop.img}/>:""}
+            {/* {props.product.shop.img?<img src={props.product?.shop.img}/>:""} */}
           </div>
           <div className="info">
-            <p className="name-shop">{props.product.shop.name}</p>
+            <p className="name-shop">{props.product?.shop_id}</p>
             <div className="btn-nav">
               <button>Tham quan shop</button>
               <button>Yêu thích</button>

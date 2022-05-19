@@ -19,9 +19,10 @@ function HomeBuyer() {
 
   const [product, setProduct] = useState([])
   const getProduct = async () => {
-    let res = await request.get('/api/product')
+    let res = await request.get('/products')
     if (res) {
-      setProduct(res.products)
+      console.log(res)
+      setProduct(res)
     }
   }
   return (
@@ -43,7 +44,7 @@ function HomeBuyer() {
           {/*  <ProductItem product={PRODUCTS[0]} />*/}
           {/*))}*/}
           {product.map((value) => {
-            if (value.export)
+
             return (
               <ProductItem product={value} />
             )

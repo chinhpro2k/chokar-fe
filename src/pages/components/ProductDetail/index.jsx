@@ -10,15 +10,14 @@ function ProductDetail(props) {
    }
 
   },[])
+  console.log(props.match?.params.id)
   const [product,setProduct]=useState([]);
   const [loading,setLoading]=useState(false);
   const getProduct=async ()=>{
     setLoading(true)
-    let res = await request.post('/api/product/getById',{
-      id:props.match.params.id
-    });
+    let res = await request.get(`/product/${props.match?.params.id}`);
     if (res){
-      setProduct(res.product);
+      setProduct(res);
       setLoading(false);
     }
   }

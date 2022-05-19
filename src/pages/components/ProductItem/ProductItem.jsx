@@ -10,10 +10,10 @@ function ProductItem(props) {
 
   return (
     <div className='h-product-item'>
-      <Link to={`/product-detail/${props.product.id}`}>
+      <Link to={`/product-detail/${props.product?.id}`}>
         <div className='h-p-item-container'>
           <div className='h-p__img'>
-            <img src={props.product.imageUrl} alt='' />
+            <img src={props.product?.imageUrl} alt='' />
             <div className='h-p__discount'>
               <div className='h-discount__num'>{discount + '%'}</div>
               <div className='h-discount__label'>Gỉam</div>
@@ -47,7 +47,7 @@ function ProductItem(props) {
                 <div className='h-p__price'>
                   {props.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </div>
-                <div className='h-p__sold'>Đã bán {props.product.historicalSold}</div>
+                <div className='h-p__sold'>Đã bán {props.product.quantity}</div>
               </div>
             </div>
           </div>

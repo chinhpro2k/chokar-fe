@@ -47,10 +47,10 @@ function HSignUpSeller(props) {
 
   const handleCreateShop = async () => {
     let res = await request.post('/api/auth/createShop', {
-      id: user.id,
+      user_id: user.id,
       email,
-      shopName,
-      shopAddress,
+      name,
+      address, 
     })
     if (res?.error === 1) return helper.toast('error', 'Loi')
   if (res){

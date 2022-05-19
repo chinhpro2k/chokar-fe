@@ -8,7 +8,7 @@ const sendRequest = async (url = '', options = {}) => {
     let response = await fetch(process.env.REACT_APP_BE_URL + url, {
       headers: {
         'Content-Type': 'application/json',
-        ...auth.getHeaderAuthentication(),
+        // ...auth.getHeaderAuthentication(),
       },
       ...options,
     })
