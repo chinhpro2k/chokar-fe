@@ -5,13 +5,16 @@ import toast from '../../../../../libs/Toast/Toast'
 import helper from '../../../../../services/helper'
 
 function ProductList() {
+  const user=JSON.parse(localStorage.getItem('user'))
   useEffect(async () => {
+    console.log("user",user.shop_id)
    if (products.length===0){
-     const res = await request.get('/api/product')
+     const res = await request.get(`/shop/product/${user?.shop_id}`)
      if (res){
-       if (res.products)
+       console.log("res product",res)
+       if (res)
        {
-         setProducts(res.products)
+         setProducts(res)
        }
      }
    }

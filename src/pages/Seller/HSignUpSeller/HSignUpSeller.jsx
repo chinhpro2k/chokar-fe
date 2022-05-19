@@ -28,7 +28,7 @@ function HSignUpSeller(props) {
   const handleSendMail = async () => {
     let res = await request.post('/api/auth/sendmail', {
       id: user.id,
-      email: email,
+      email: email
     })
     if (res?.error === 1) return helper.toast('error', 'error send mail')
     helper.toast('success', 'OTP đã được gửi đến email của bạn \n Hãy nhập mã OTP')
@@ -38,25 +38,30 @@ function HSignUpSeller(props) {
   const handleSendOTP = async () => {
     let res = await request.post('/api/auth/confirmOTP', {
       id: user.id,
-      otp,
+      otp
     })
     if (res?.error === 1) return helper.toast('error', 'Nhập sai mã OTP')
     helper.toast('success', 'Chính xác! Hãy nhập tên shop để hoành thành')
     setCurrentStep(2)
   }
-
   const handleCreateShop = async () => {
     let res = await request.post('/api/auth/createShop', {
       user_id: user.id,
       email,
-      name,
-      address, 
+      name: shopName,
+      address: shopAddress
     })
     if (res?.error === 1) return helper.toast('error', 'Loi')
-  if (res){
-    helper.toast('success', 'Tạo shop thành công')
-    props.history.push('/seller/home-center')
-  }else  helper.toast('danger', 'Đã có lỗi xảy ra')
+    if (res) {
+      console.log('res', res)
+      let obj = {
+        ...user,
+        shop_id: res?.user_id.toString()
+      }
+      localStorage.setItem('user', JSON.stringify(obj))
+      helper.toast('success', 'Tạo shop thành công')
+      props.history.push('/seller/home-center')
+    } else helper.toast('danger', 'Đã có lỗi xảy ra')
   }
 
   return (

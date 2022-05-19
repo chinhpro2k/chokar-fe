@@ -20,7 +20,7 @@ function SellerCenter(props) {
         props.history.push('/seller/register')
 
       } else {
-        const res = await request.get(`/api/shop?id=${user.shop_id}`)
+        const res = await request.get(`/api/auth/createShop?id=${user.shop_id}`)
         if (res) {
           setShop(res.shop)
         }
